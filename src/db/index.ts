@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import { and, desc, eq } from 'drizzle-orm';
-import { chatsTable, messagesTable } from './db/schema';
+import { chatsTable, messagesTable } from './schema';
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error('Missing DATABASE_URL');

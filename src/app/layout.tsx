@@ -10,6 +10,7 @@ import {
 } from '@clerk/nextjs'
 import "./globals.css";
 import Navibar from "../components/Navibar";
+import QueryClientProvider from "../components/QueryClientProvider";
 
 
 const geistSans = Geist({
@@ -32,22 +33,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
+  return (   
     <ClerkProvider>
-    <html lang="en">
-      
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-row`}
-      >
-        <div className="w-1/5 h-screen bg-gray-50">
-              <Navibar />
-            </div>
-        <div className="w-4/5 h-screen">
-          {children}
-        </div>
-      </body>
+      <QueryClientProvider>
+        <html lang="en">
 
-    </html>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-row`}
+          >
+            <div className="w-1/5 h-screen bg-gray-50">
+                  <Navibar />
+                </div>
+            <div className="w-4/5 h-screen">
+              {children}
+            </div>
+          </body>
+
+        </html>
+      </QueryClientProvider>
     </ClerkProvider>
   );
 }
